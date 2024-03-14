@@ -134,7 +134,7 @@ const Registration = ({ onSuccess }) => {
                 onFinishFailed={onFinishFailed}
             >
                 <Form.Item
-                    label="Username"
+                    label="Name"
                     name="username"
                     rules={[
                         {
@@ -181,7 +181,7 @@ const Registration = ({ onSuccess }) => {
 
 
                 <Form.Item
-                    label="DatePicker"
+                    label="Date of Birth"
                     name="DatePicker"
                     rules={[
                         {

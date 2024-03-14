@@ -41,28 +41,28 @@ export const Home = () => {
                         heading="Pain"
                         height='100px'
                         subtitle="Crying due to pain"
-                        description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
+                        description=" Pain in infants can be caused by various factors such as illness, injury, teething, or discomfort from gas or colic.It's crucial for caregivers to attentively interpret these cries to address the cause of discomfort, ensuring the well-being and comfort of the baby."
                         image="pain.jpg" />
                     <Cardx
                         heading="Hunger"
                         height='65px'
                         margin='10px'
                         subtitle="Crying due to hunger"
-                        description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
+                        description="Babies cry due to hunger as it is one of their most basic needs and their initial way to express it. This form of communication alerts caregivers that it is time for feeding."
                         image="https://cdn-icons-png.freepik.com/512/4292/4292048.png" />
                     <Cardx
                         heading="Discomfort"
                         subtitle="Crying due to Discomfort"
                         height='65px'
                         margin='10px'
-                        description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
+                        description="Discomfort can arise from various sources such as a wet diaper, feeling too hot or too cold, being in an uncomfortable position, or experiencing minor physical irritations."
                         image="https://cdn-icons-png.freepik.com/512/927/927559.png" />
                     <Cardx
-                        heading="Hunger"
+                        heading="Tired"
                         height='65px'
                         margin='10px'
-                        subtitle="Crying due to hunger"
-                        description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
+                        subtitle="Crying due to Tiredness"
+                        description="Babies cry due to tiredness as a means of signaling their need for rest or sleep. Caregivers can help by recognizing these signs early and establishing a calming bedtime routine to ease the transition to sleep."
                         image="https://cdn-icons-png.freepik.com/512/4292/4292048.png" />
 
 
