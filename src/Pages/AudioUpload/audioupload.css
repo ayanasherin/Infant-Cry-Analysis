@@ -1,0 +1,22 @@
+.upload-ctn {
+  width: 70%;
+  border-radius: 10px;
+  background-color: #1e82b3;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.main-up-ctn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.wave-icon2 {
+  width: auto;
+  height: 250px;
+}

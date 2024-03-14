@@ -1,0 +1,49 @@
+.baby-land-img {
+  width: auto;
+  height: 400px;
+}
+
+.block {
+  width: 700px;
+  background-color: #1e82b3;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+.block h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.block p {
+  margin-bottom: 50px;
+}
+
+.block .btn {
+  background-color: none;
+  border: 1px solid white !important;
+  color: white !important;
+  padding: 0 20px 0 !important;
+  border-radius: 0px !important;
+  height: 40px;
+  width: 150px;
+  margin-right: 20px;
+}
+
+.block .btn:hover {
+  color: #1e82b3 !important;
+  background-color: none !important;
+}
+
+.wave-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.main-ctn {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

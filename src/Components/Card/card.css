@@ -1,0 +1,24 @@
+.card-ctn:nth-child(even) {
+  background-color: #e4eff8 !important;
+}
+
+.card-ctn {
+  border-radius: 0px !important;
+}
+
+.card-img {
+  width: auto;
+  height: 80px;
+}
+
+.card-heading {
+  color: #1e82b3 !important;
+}
+
+.desc {
+  /* text-align: justify !important; */
+}
+
+.img-ctn {
+  height: 100px;
+}

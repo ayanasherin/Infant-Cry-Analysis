@@ -1,0 +1,9 @@
+.modalx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-modal .ant-modal-content {
+  width: 400px;
+}

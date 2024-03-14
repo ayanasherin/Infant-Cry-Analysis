@@ -1,0 +1,13 @@
+.logo {
+  width: auto;
+  height: 50px;
+}
+
+.link {
+  color: #1e82b3 !important;
+  font-weight: 600 !important;
+}
+
+.custom-navbar {
+  background-color: #e4eff8;
+}
