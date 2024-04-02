@@ -1,0 +1,28 @@
+/* Nutrition.css */
+
+.nutrition-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.nutrition-category {
+    width: 70%;
+    margin-bottom: 50px;
+}
+
+.nutrition-category h2 {
+    margin-bottom: 20px;
+}
+
+.nutrition-category ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nutrition-category li {
+    margin-bottom: 20px;
+}

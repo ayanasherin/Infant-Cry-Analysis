@@ -1,0 +1,30 @@
+/* HealthcareM.css */
+
+.healthcare-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.healthcare-image {
+    max-width: 50%;
+    max-height: 50%;
+    margin-bottom: 20px;
+}
+
+.healthcare-content {
+    max-width: 70%;
+}
+
+.healthcare-tips {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+.healthcare-tips li {
+    margin-bottom: 30px;
+}

@@ -38,7 +38,7 @@ const ModalX = ({ source, item }) => {
 
                 }
             </div>
-            <Modal title="Login" visible={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null} className='modalx'>
+            <Modal title={source} visible={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null} className='modalx'>
                 {item == "login" ?
                     <Login className="login-ctn" />
                     : <Registration onSuccess={handleRegistrationSuccess} />}

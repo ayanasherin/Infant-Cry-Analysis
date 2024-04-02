@@ -1,0 +1,43 @@
+/* MentalHealth.css */
+
+.mental-health-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.mental-health-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.positive-quotes, .soothing-music {
+    width: 70%;
+    margin-bottom: 50px;
+}
+
+.positive-quotes h2, .soothing-music h2 {
+    margin-bottom: 20px;
+}
+
+.positive-quotes ul, .soothing-music ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.positive-quotes li, .soothing-music li {
+    margin-bottom: 20px;
+}
+
+.soothing-music a {
+    color: #1e82b3;
+    text-decoration: none;
+}
+
+.soothing-music a:hover {
+    text-decoration: underline;
+}

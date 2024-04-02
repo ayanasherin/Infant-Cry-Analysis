@@ -167,6 +167,14 @@ const Registration = ({ onSuccess }) => {
                             required: true,
                             message: 'Please input your password!',
                         },
+                        {
+                            min: 8,
+                            message: 'Password must be at least 8 characters long!',
+                        },
+                        {
+                            pattern: /^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+                            message: 'Password must contain at least one uppercase letter, one special character, and alphanumeric characters!',
+                        },
                     ]}
                 >
                     <Input.Password />
@@ -181,7 +189,7 @@ const Registration = ({ onSuccess }) => {
 
 
                 <Form.Item
-                    label="Date of Birth"
+                    label="DOB"
                     name="DatePicker"
                     rules={[
                         {

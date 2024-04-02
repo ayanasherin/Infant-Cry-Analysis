@@ -1,0 +1,34 @@
+/* Tips.css */
+
+.tips-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.tips-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.birth-tips, .newborn-care-tips {
+    width: 70%;
+    margin-bottom: 50px;
+}
+
+.birth-tips h2, .newborn-care-tips h2 {
+    margin-bottom: 20px;
+}
+
+.birth-tips ul, .newborn-care-tips ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.birth-tips li, .newborn-care-tips li {
+    margin-bottom: 20px;
+}

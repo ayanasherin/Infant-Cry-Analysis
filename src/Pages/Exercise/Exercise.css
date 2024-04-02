@@ -1,0 +1,30 @@
+/* Exercise.css */
+
+.exercise-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.exercise-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.exercise-content {
+    max-width: 70%;
+}
+
+.exercise-tips {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+.exercise-tips li {
+    margin-bottom: 30px;
+}
