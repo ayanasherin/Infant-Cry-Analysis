@@ -23,7 +23,7 @@ export const Home = () => {
                 <div className="d-flex p-2 ">
                     <div className="block">
                         <h1>CryDecode</h1>
-                        <p>Can't Understand why your baby is crying? <br />Well we are here to help you</p>
+                        <p>Can't Understand why your baby is crying? <br />Well, we are here to help you</p>
                         <div className="d-flex align-items-center ">
                             {logCheck ?
                                 <Button onClick={() => { nav('/upload') }} className="btn">Upload</Button> :
