@@ -1,0 +1,50 @@
+/* Profile.css */
+
+/* .profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-form {
+    margin-top: 20px;
+}
+
+.avatar-uploader {
+    width: 100%;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+    width: 128px;
+    height: 128px;
+}
+
+.ant-upload-list-picture-card .ant-upload-list-item {
+    width: 128px;
+    height: 128px;
+}
+
+.ant-upload-list-picture-card .ant-upload-list-item-thumbnail {
+    width: 100%;
+    height: 100%;
+}
+
+.ant-upload-list-picture-card .ant-upload-list-item-info {
+    display: none;
+}
+
+.ant-upload-list-picture-card-container {
+    margin-top: 10px;
+}
+
+.ant-upload-list-picture-card .ant-upload-list-item-actions {
+    display: none;
+}
+ */
+.head{
+    color: blue;
+    font-weight: bold;
+    font-size: larger;
+    font-style: italic;
+
+}

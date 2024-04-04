@@ -33,7 +33,6 @@ const formItemLayout = {
     },
 };
 const Registration = ({ onSuccess }) => {
-    // const [name, setName] = useState("");
 
     const [api, contextHolder] = notification.useNotification();
 
@@ -100,10 +99,9 @@ const Registration = ({ onSuccess }) => {
         function formatDate(inputDate) {
             const date = new Date(inputDate);
             const year = date.getFullYear();
-            const month = date.getMonth() + 1; // Months are zero-based, so we add 1
+            const month = date.getMonth() + 1; 
             const day = date.getDate();
 
-            // Use template literals to format the date with single-digit month and day
             const formattedDate = `${year}-${month}-${day}`;
 
             return formattedDate;
@@ -111,7 +109,6 @@ const Registration = ({ onSuccess }) => {
 
         const inputDate = dateString;
         const formattedDate = formatDate(inputDate);
-        // console.log(formattedDate);
 
 
         setDate(formattedDate)

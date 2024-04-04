@@ -23,7 +23,7 @@ const DropDownX = () => {
         {
             key: '1',
             label: (
-                <Link target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                <Link target="_blank" rel="noopener noreferrer" href="/profile">
                     Profile
                 </Link>
             ),

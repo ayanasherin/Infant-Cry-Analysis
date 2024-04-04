@@ -9,6 +9,7 @@ import Exercise from './Pages/Exercise/Exercise';
 import MentalHealth from './Pages/MentalHealth/MentalHealth';
 import Tips from './Pages/Tips/Tips';
 import Nutrition from './Pages/Nutrition/Nutrition';
+import Profile from './Pages/Profile/Profile';
 function App() {
 
 
@@ -24,6 +25,8 @@ function App() {
         <Route path="/mentalhealth" element={<MentalHealth/>} />
         <Route path="/tips" element={<Tips/>} />
         <Route path="/nutrition" element={<Nutrition/>} />
+        <Route path="/profile" element={<Profile/>} />
+
 
 
 
