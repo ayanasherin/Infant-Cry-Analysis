@@ -4,49 +4,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-}
-
-.mental-health-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.positive-quotes, .soothing-music {
-    width: 70%;
-    margin-bottom: 50px;
-}
-
-.positive-quotes h2, .soothing-music h2 {
-    margin-bottom: 20px;
-}
-
-.positive-quotes ul, .soothing-music ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.positive-quotes li, .soothing-music li {
-    margin-bottom: 20px;
-}
-
-.soothing-music a {
-    color: #1e82b3;
-    text-decoration: none;
-}
-
-.soothing-music a:hover {
-    text-decoration: underline;
-}
-/* MentalHealth.css */
-
-.mental-health-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 20px;
 }
 
@@ -86,6 +43,12 @@
     margin-bottom: 20px;
 }
 
+.music-item a {
+    text-decoration: none; /* Remove underline decoration */
+    color: black; /* Change link color to black */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .music-cover {
     width: 100%;
     max-width: 200px;
@@ -105,4 +68,37 @@
     font-size: 1rem;
     font-weight: bold;
 }
+/* MentalHealth.css */
 
+.positive-quotes {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.positive-icons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    /* border: 1px solid rgba(0, 0, 0, 0.1);  */
+    border-radius: 8px; 
+    background: linear-gradient(135deg, #fdfcfb, #e2ebf0);}
+
+.positive-icon {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.positive-icon:hover {
+    transform: scale(1.05);
+}
+
+.positive-icon-text {
+    font-size: 1.1rem;
+    font-style: italic;
+}
