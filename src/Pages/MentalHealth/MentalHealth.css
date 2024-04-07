@@ -41,3 +41,68 @@
 .soothing-music a:hover {
     text-decoration: underline;
 }
+/* MentalHealth.css */
+
+.mental-health-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.mental-health-image {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.positive-quotes {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.quote-list {
+    list-style: none;
+    padding: 0;
+}
+
+.quote-item {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.soothing-music {
+    text-align: center;
+}
+
+.music-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.music-item {
+    margin-bottom: 20px;
+}
+
+.music-cover {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.music-cover:hover {
+    transform: scale(1.05);
+}
+
+.music-title {
+    display: block;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+

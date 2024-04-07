@@ -1,63 +1,39 @@
-import {
-    Button,
-    DatePicker,
-    Form,
-    Input,
-    Select,
-} from 'antd';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { app, auth } from '../../utils/Firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, collection, setDoc, doc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
+import { Button, DatePicker, Form, Input, Select, Spin, notification, } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import { Spin, notification, } from 'antd';
-
 
 const formItemLayout = {
     labelCol: {
-        xs: {
-            span: 24,
-        },
-        sm: {
-            span: 6,
-        },
+        xs: { span: 24 },
+        sm: { span: 6 },
     },
     wrapperCol: {
-        xs: {
-            span: 24,
-        },
-        sm: {
-            span: 14,
-        },
+        xs: { span: 24 },
+        sm: { span: 14 },
     },
 };
+
 const Registration = ({ onSuccess }) => {
-
     const [api, contextHolder] = notification.useNotification();
-
     const [date, setDate] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const nav = useNavigate();
 
-
     const openNotificationWithIcon = (type) => {
         api[type]({
             message: 'Notification Title',
-            description:
-                'Email already in use',
+            description: 'Email already in use',
         });
     };
 
     const onFinish = async (values) => {
-
         values.date = date;
         delete values.DatePicker;
-        console.log('Success:', values);
-
-
-
 
         try {
             setLoading(true);
@@ -71,26 +47,20 @@ const Registration = ({ onSuccess }) => {
                     console.log("Success");
                     setLoading(false);
                     onSuccess();
-
                 }).catch((error) => {
                     console.error("Error saving user data:", error);
                 });
             }
-
         } catch (error) {
-
             openNotificationWithIcon('error');
             setLoading(false);
             console.error("Error registering user:", error);
         }
-
-
     };
+
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-
-
 
     const onChange = (date, dateString) => {
         console.log(date, dateString);
@@ -99,25 +69,18 @@ const Registration = ({ onSuccess }) => {
         function formatDate(inputDate) {
             const date = new Date(inputDate);
             const year = date.getFullYear();
-            const month = date.getMonth() + 1; 
+            const month = date.getMonth() + 1;
             const day = date.getDate();
 
             const formattedDate = `${year}-${month}-${day}`;
-
             return formattedDate;
         }
 
         const inputDate = dateString;
         const formattedDate = formatDate(inputDate);
-
-
-        setDate(formattedDate)
-
-
-
+        setDate(formattedDate);
     };
 
-    console.log(date);
     return (
         <>
             {contextHolder}
@@ -184,7 +147,6 @@ const Registration = ({ onSuccess }) => {
                     </Select>
                 </Form.Item>
 
-
                 <Form.Item
                     label="DOB"
                     name="DatePicker"
@@ -198,7 +160,6 @@ const Registration = ({ onSuccess }) => {
                     <DatePicker onChange={onChange} value={date} />
                 </Form.Item>
 
-
                 <Form.Item
                     wrapperCol={{
                         offset: 6,
@@ -206,7 +167,7 @@ const Registration = ({ onSuccess }) => {
                     }}
                 >
                     <Button htmlType="submit">
-                        Submit  {loading ? <Spin
+                        Submit {loading ? <Spin
                             indicator={
                                 <LoadingOutlined
                                     style={{
@@ -224,4 +185,5 @@ const Registration = ({ onSuccess }) => {
         </>
     );
 };
+
 export default Registration;

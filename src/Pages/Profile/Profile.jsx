@@ -55,7 +55,7 @@ const Profile = () => {
                 message.error('Failed to update profile. Please try again.');
             }
         }
-        setLoading(false);
+-        setLoading(false);
     };
 
     const beforeUpload = (file) => {

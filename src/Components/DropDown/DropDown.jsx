@@ -23,9 +23,8 @@ const DropDownX = () => {
         {
             key: '1',
             label: (
-                <Link target="_blank" rel="noopener noreferrer" href="/profile">
-                    Profile
-                </Link>
+                <a href='/profile'>Profile</a>
+        
             ),
         },
         {
