@@ -10,6 +10,8 @@ import MentalHealth from './Pages/MentalHealth/MentalHealth';
 import Tips from './Pages/Tips/Tips';
 import Nutrition from './Pages/Nutrition/Nutrition';
 import Profile from './Pages/Profile/Profile';
+import UploadPage from './Pages/UploadPage/UploadPage';
+
 function App() {
 
 
@@ -19,13 +21,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/upload" element={<AudioUpload />} />
-        <Route path="/healthcare-m" element={<HealthcareM/>} />
-        <Route path="/exercise" element={<Exercise/>} />
-        <Route path="/mentalhealth" element={<MentalHealth/>} />
-        <Route path="/tips" element={<Tips/>} />
-        <Route path="/nutrition" element={<Nutrition/>} />
-        <Route path="/profile" element={<Profile/>} />
+        <Route path="/upload" element={<UploadPage />} />
+        <Route path="/healthcare-m" element={<HealthcareM />} />
+        <Route path="/exercise" element={<Exercise />} />
+        <Route path="/mentalhealth" element={<MentalHealth />} />
+        <Route path="/tips" element={<Tips />} />
+        <Route path="/nutrition" element={<Nutrition />} />
+        <Route path="/profile" element={<Profile />} />
 
 
 

@@ -32,7 +32,7 @@ const ModalX = ({ source, item }) => {
                     </Button> : source == "Login" ?
                         <Button onClick={showModal} className='btn' style={{ fontWeight: '600', color: '#1e82b3' }}>
                             {source}
-                        </Button> : <Button onClick={showModal} className='btn'>
+                        </Button> : <Button onClick={showModal} className='btn' style={{ fontWeight: '600', color: '#1e82b3' }}>
                             {source}
                         </Button>
 

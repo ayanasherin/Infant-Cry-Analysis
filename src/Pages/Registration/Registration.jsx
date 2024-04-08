@@ -3,8 +3,9 @@ import { app, auth } from '../../utils/Firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, collection, setDoc, doc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
-import { Button, DatePicker, Form, Input, Select, Spin, notification, } from 'antd';
+import { Button, DatePicker, Form, Input, Select, Spin, notification } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import moment from 'moment';
 
 const formItemLayout = {
     labelCol: {
@@ -22,18 +23,40 @@ const Registration = ({ onSuccess }) => {
     const [date, setDate] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [afterDelivery, setAfterDelivery] = useState(false); // State for after delivery option
+    const [babyFieldsEnabled, setBabyFieldsEnabled] = useState(false); // State to enable/disable baby-related fields
+    const [babyDate, setBabyDate] = useState('');
     const nav = useNavigate();
 
     const openNotificationWithIcon = (type) => {
         api[type]({
-            message: 'Notification Title',
+            message: 'Crydecode',
             description: 'Email already in use',
         });
     };
 
     const onFinish = async (values) => {
         values.date = date;
+        values.babyDOB = babyDate;
+        values.afterDelivery = afterDelivery;
+
+
+        if (values.afterDelivery) {
+            values.babies = [{
+                babyName: values.babyName,
+                babyGender: values.babyGender,
+                babyDOB: values.babyDOB
+            }];
+            delete values.babyName;
+            delete values.babyGender;
+            delete values.babyDOB;
+        }
+
+
         delete values.DatePicker;
+
+
+        console.log(values);
 
         try {
             setLoading(true);
@@ -42,7 +65,11 @@ const Registration = ({ onSuccess }) => {
             const db = getFirestore(app);
             const colRef = collection(db, "users");
             const newDocRef = doc(colRef, user.uid);
+
+
             if (user) {
+                console.log(values);
+                delete values.password;
                 await setDoc(newDocRef, values).then(() => {
                     console.log("Success");
                     setLoading(false);
@@ -79,6 +106,35 @@ const Registration = ({ onSuccess }) => {
         const inputDate = dateString;
         const formattedDate = formatDate(inputDate);
         setDate(formattedDate);
+    };
+
+    const onBabyDateChange = (date, dateString) => {
+        console.log(date, dateString);
+        setBabyDate(dateString);
+
+        function formatDate(inputDate) {
+            const date = new Date(inputDate);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+
+            const formattedDate = `${year}-${month}-${day}`;
+            return formattedDate;
+        }
+
+        const inputDate = dateString;
+        const formattedDate = formatDate(inputDate);
+        setBabyDate(formattedDate);
+    };
+
+    // Function to toggle baby fields based on after delivery option
+    const toggleBabyFields = (checked) => {
+        console.log(checked);
+
+        setAfterDelivery(checked);
+
+
+        setBabyFieldsEnabled(checked);
     };
 
     return (
@@ -157,8 +213,42 @@ const Registration = ({ onSuccess }) => {
                         },
                     ]}
                 >
-                    <DatePicker onChange={onChange} value={date} />
+                    <DatePicker disabledDate={(current) => current && current > moment().endOf('day')} onChange={onChange} value={date} />
                 </Form.Item>
+
+                <Form.Item
+                    label="After Delivery"
+                    name="afterDelivery"
+
+                >
+                    <input type="checkbox" onChange={(e) => toggleBabyFields(e.target.checked)} />
+                </Form.Item>
+
+                {babyFieldsEnabled && (
+                    <>
+                        <Form.Item
+                            label="Baby Name"
+                            name="babyName"
+                        >
+                            <Input />
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Baby Gender"
+                            name="babyGender"
+                        >
+                            <Select>
+                                <Select.Option value="Female">Female</Select.Option>
+                                <Select.Option value="Male">Male</Select.Option>
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            label="Baby DOB"
+                            name="babyDOB"
+                        >
+                    <DatePicker disabledDate={(current) => current && current > moment().endOf('day')} onChange={onBabyDateChange} value={babyDate} />                        </Form.Item>
+                    </>
+                )}
 
                 <Form.Item
                     wrapperCol={{

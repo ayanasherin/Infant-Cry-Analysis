@@ -1,0 +1,16 @@
+.mfcc-process-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mfcc-step {
+  opacity: 0.3;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.mfcc-step.highlighted {
+  opacity: 1;
+  font-weight: 500;
+  font-size: 14px;
+}

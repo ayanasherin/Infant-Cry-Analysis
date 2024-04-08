@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MentalHealth.css';
 import NavbarX from '../../Components/NavbarX.jsx/NavbarX';
 
@@ -20,7 +20,7 @@ function MentalHealth() {
     ];
 
     const soothingMusic = [
-        { id: 1, title: "Weightless by Marconi Union", link: "https://www.youtube.com/watch?v=UfcAVejslrU", image: "weightless_cover.jpg" },
+        { id: 1, title: "Weightless by Marconi Union", link: "https://www.youtube.com/embed/vR2lf8Z0SVo?si=b9NCKdbSeoWT04lJ", image: "weightless_cover.jpg" },
         { id: 2, title: "Clair de Lune by Claude Debussy", link: "https://www.youtube.com/watch?v=CvFH_6DNRCY", image: "clair_de_lune_cover.jpg" },
         { id: 3, title: "Spiegel im Spiegel by Arvo Pärt", link: "https://www.youtube.com/watch?v=TJ6Mzvh3XCc", image: "spiegel_im_spiegel_cover.jpeg" },
         { id: 4, title: "Gymnopédie No.1 by Erik Satie", link: "https://www.youtube.com/watch?v=S-Xm7s9eGxU", image: "gymnopedie_cover.jpg" },
@@ -35,11 +35,18 @@ function MentalHealth() {
         // Add more soothing music recommendations here
     ];
 
+    const [videoUrl, setVideoUrl] = useState(""); // State to store the video URL
+
+    // Function to handle when a song card is clicked
+    const handleSongClick = (link) => {
+        setVideoUrl(link); // Set the video URL to the clicked song's link
+    };
+
     return (
         <>
             <NavbarX />
             <div className="mental-health-container">
-                <img src= 'MentalHealth.jpg' alt="Mental Health Image" className="mental-health-image" />
+                <img src='MentalHealth.jpg' alt="Mental Health Image" className="mental-health-image" />
                 <div className="positive-quotes">
                     <h2>Positive Affirmations</h2>
                     <div className="positive-icons-container">
@@ -50,17 +57,34 @@ function MentalHealth() {
                 </div>
                 <div className="soothing-music">
                     <h2>Soothing Music For Happy Mind</h2>
+                    {videoUrl && (
+                        <div className="video-player-container">
+                            <h2>Now Playing</h2>
+                            <iframe
+                                width="560"
+                                height="315"
+                                src={videoUrl}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    )}
                     <div className="music-list">
                         {soothingMusic.map(music => (
                             <div key={music.id} className="music-item">
-                                <a href={music.link} target="_blank" rel="noopener noreferrer">
+                                <div onClick={() => handleSongClick(music.link)} className="music-cover">
                                     <img src={music.image} alt={music.title} className="music-cover" />
                                     <span className="music-title">{music.title}</span>
-                                </a>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
+
+                {/* Video player */}
+
             </div>
         </>
     );

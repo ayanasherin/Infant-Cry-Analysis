@@ -47,6 +47,7 @@ const Login = () => {
                 if (user) {
                     console.log(user);
                     localStorage.setItem('user', user);
+                    localStorage.setItem('userid', user.uid);
                     console.log("logged in");
                     nav('/upload');
                 }

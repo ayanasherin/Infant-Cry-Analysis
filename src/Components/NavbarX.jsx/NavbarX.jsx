@@ -7,9 +7,16 @@ import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './navbar.css';
 import ModalX from '../Modal/Modal';
 import DropDownX from '../DropDown/DropDown';
+import { useEffect, useState } from 'react';
 
 function NavbarX() {
+    const [logCheck, setLogCheck] = useState(false);
     const user = localStorage.getItem('user');
+    useEffect(() => {
+        if (user) {
+            setLogCheck(true);
+        }
+    }, [user])
 
     return (
         <Navbar expand="lg" className="custom-navbar">
@@ -17,15 +24,24 @@ function NavbarX() {
                 <Navbar.Brand as={Link} to="/"><img src="logo.png" className='logo' /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                    <Nav className="me-auto link-custom">
                         <Nav.Link as={Link} to="/" className='link'>Home</Nav.Link>
-                        <Nav.Link as={Link} to="/upload" className='link'>Upload</Nav.Link>
-                        <NavDropdown  className='link' title="Services"  id="basic-nav-dropdown">
-                            <NavDropdown.Item  className='link' as={Link} to="/healthcare-m">Maternal Care</NavDropdown.Item>
-                            <NavDropdown.Item  className='link' as={Link} to="/exercise">Exercises</NavDropdown.Item>
-                            <NavDropdown.Item  className='link' as={Link} to="/mentalhealth">Mental Health</NavDropdown.Item>
-                            <NavDropdown.Item  className='link' as={Link} to="/tips">Tips</NavDropdown.Item>
-                            <NavDropdown.Item  className='link' as={Link} to="/nutrition">Nutrition</NavDropdown.Item>
+
+                        {logCheck ? (
+                            <Nav.Link as={Link} to="/upload" className='link'><p>Upload</p></Nav.Link>
+                        ) : (
+                            <div className='link' style={{ color: "#1e82b3" }}>
+                                <ModalX item="login" source="Upload" />
+                            </div>
+                        )}
+
+
+                        <NavDropdown className='link' title="Services" id="basic-nav-dropdown">
+                            <NavDropdown.Item className='link' as={Link} to="/healthcare-m">Maternal Care</NavDropdown.Item>
+                            <NavDropdown.Item className='link' as={Link} to="/exercise">Exercises</NavDropdown.Item>
+                            <NavDropdown.Item className='link' as={Link} to="/mentalhealth">Mental Health</NavDropdown.Item>
+                            <NavDropdown.Item className='link' as={Link} to="/tips">Tips</NavDropdown.Item>
+                            <NavDropdown.Item className='link' as={Link} to="/nutrition">Nutrition</NavDropdown.Item>
 
 
 
