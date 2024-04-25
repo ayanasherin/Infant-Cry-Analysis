@@ -30,15 +30,15 @@ const ModalX = ({ source, item }) => {
                     <Button onClick={showModal} style={{ padding: '0px', height: '0px', border: 'none', color: "#1e82b3", marginLeft: '10px' }}>
                         {source}
                     </Button> : source == "Login" ?
-                        <Button onClick={showModal} className='btn' style={{ fontWeight: '600', color: '#1e82b3' }}>
+                        <Button onClick={showModal} className='btn' style={{ fontWeight: '600', color: '#1e82b3',border:'none' }}>
                             {source}
-                        </Button> : <Button onClick={showModal} className='btn' style={{ fontWeight: '600', color: '#1e82b3' }}>
+                        </Button> : <Button onClick={showModal} className='btn' style={{ fontWeight: '600', color: '#1e82b3', border:'none', position:'relative', top:'2px' }}>
                             {source}
                         </Button>
 
                 }
             </div>
-            <Modal title={source} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null} className='modalx'>
+            <Modal title="Login" visible={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={null} className='modalx'>
                 {item == "login" ?
                     <Login className="login-ctn" />
                     : <Registration onSuccess={handleRegistrationSuccess} />}

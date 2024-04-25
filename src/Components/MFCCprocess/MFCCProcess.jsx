@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import './MFCCProcess.css'; // Import CSS file for styling
+import './MFCCProcess.css'; 
 
 const MFCCProcess = () => {
     const [currentStep, setCurrentStep] = useState(0);
 
-    // Define MFCC processing steps
+    
     const mfccProcessingSteps = [
         'Frame Segmentation',
         'Windowing',
@@ -23,7 +23,6 @@ const MFCCProcess = () => {
 
     return (
         <div className="mfcc-process-container">
-            {/* Map through each processing step and highlight the current step */}
             {mfccProcessingSteps.map((step, index) => (
                 <div key={index} className={`mfcc-step ${index === currentStep ? 'highlighted' : ''}`}>
                     {step}

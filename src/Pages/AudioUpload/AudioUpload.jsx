@@ -17,8 +17,8 @@ function AudioUpload() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [uploadStatus, setUploadStatus] = useState("");
     const [result, setResult] = useState("");
-    const [loading, setLoading] = useState(false); // State to track loading status
-
+    const [loading, setLoading] = useState(false); 
+    const [percentage, setPercentage] = useState("");
     const [spinLoading, setSpinLoading] = useState(false);
 
 
@@ -51,10 +51,8 @@ function AudioUpload() {
     };
 
     const process = () => {
-        // Set loading to true initially
         setLoading(true);
 
-        // Use setTimeout to set loading to false after 5 seconds
         setTimeout(() => {
             setLoading(false);
             setSpinLoading(true);
@@ -81,7 +79,19 @@ function AudioUpload() {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            setResult(baby ? baby + " is " + response.data.predictions[0][0] : "The baby is " + response.data.predictions[0][0]);
+            if (response.data.predictions[0][0] == "discomfort") {
+                response.data.predictions[0][0] = "discomfort";
+            }
+
+            if (response.data.predictions[0][0] == "hungry") {
+                response.data.predictions[0][0] = "hunger";
+            }
+
+            if (response.data.predictions[0][0] == "tired") {
+                response.data.predictions[0][0] = "tiredness";
+            }
+            setResult(baby ? baby + " is crying due to " + response.data.predictions[0][0] : "The baby is crying due to  " + response.data.predictions[0][0]);
+            setPercentage(response.data.predictions[0][1])
             console.log(response.data);
             process();
             setUploadStatus('Uploaded successfully');
@@ -92,7 +102,6 @@ function AudioUpload() {
     };
 
     useEffect(() => {
-        // Start loading spinner
         if (spinLoading) {
 
             // Stop loading spinner after 2 seconds
@@ -193,7 +202,7 @@ function AudioUpload() {
 
                             />
                         }
-                    /> : result != "" ? <><h1> {result}</h1>
+                    /> : result != "" ? <><h1> {result} ({percentage * 10}%)</h1>
                         <Button onClick={saveResponse}>Save</Button></> : null}</>}
                 </div> : <p>Please login</p>}
         </div>

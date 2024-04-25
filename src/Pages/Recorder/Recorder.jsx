@@ -29,6 +29,7 @@ const Recorder = () => {
     const [loading, setLoading] = useState(false);
     const [spinLoading, setSpinLoading] = useState(false);
     const [uploading, setUploading] = useState(false);
+    const [percentage, setPercentage] = useState("");
 
     const openNotificationWithIcon = (type) => {
         api[type]({
@@ -189,23 +190,7 @@ const Recorder = () => {
             const formData = new FormData();
             formData.append('file', audioFile);
 
-            // const audioUrl = URL.createObjectURL(audioFile);
-
-            // // Create a hidden anchor element
-            // const downloadLink = document.createElement('a');
-            // downloadLink.href = audioUrl;
-            // downloadLink.download = 'voice.wav';
-            // downloadLink.style.display = 'none';
-
-            // // Append the anchor to the body
-            // document.body.appendChild(downloadLink);
-
-            // // Click the anchor to trigger the download
-            // downloadLink.click();
-
-            // // Clean up: remove the anchor and revoke the URL
-            // document.body.removeChild(downloadLink);
-            // URL.revokeObjectURL(audioUrl);
+           
 
             const process = () => {
                 // Set loading to true initially
@@ -228,8 +213,20 @@ const Recorder = () => {
                     }
                 });
                 console.log(response.data);
+                if (response.data.predictions[0][0] == "discomfort") {
+                    response.data.predictions[0][0] = "discomfort";
+                }
 
-                setResult(baby ? baby + " is " + response.data.predictions[0][0] : "The baby is " + response.data.predictions[0][0]);
+                if (response.data.predictions[0][0] == "hungry") {
+                    response.data.predictions[0][0] = "hunger";
+                }
+
+                if (response.data.predictions[0][0] == "tired") {
+                    response.data.predictions[0][0] = "tiredness";
+                }
+
+                setResult(baby ? baby + " is crying due to  " + response.data.predictions[0][0] : "The baby is crying due to  " + response.data.predictions[0][0]);
+                setPercentage(response.data.predictions[0][1])
                 process();
                 console.log('Uploaded successfully');
                 setUploading(false);
@@ -245,22 +242,18 @@ const Recorder = () => {
     }
 
     useEffect(() => {
-        // Start loading spinner
         if (spinLoading) {
 
-            // Stop loading spinner after 2 seconds
             setTimeout(() => {
                 setSpinLoading(false);
             }, 1000);
         }
 
-        // Clear the timer when component unmounts
 
-    }, [spinLoading]); // This effect will run once on component mount
+    }, [spinLoading]); 
     const db = getFirestore(app);
 
     const saveResponse = async () => {
-        // Create a new response object
         const timestamp = new Date().getTime();
         const date = new Date(timestamp)
 
@@ -270,24 +263,16 @@ const Recorder = () => {
         };
 
         try {
-            // Get a reference to the user document
-            const userDocRef = doc(db, 'users', userid); // Replace userId with the actual user ID
-
-            // Get the user document snapshot
+            const userDocRef = doc(db, 'users', userid); 
             const userDocSnapshot = await getDoc(userDocRef);
 
-            // Check if the document exists
             if (userDocSnapshot.exists()) {
-                // Get the user data
                 const userData = userDocSnapshot.data();
 
-                // Check if babies array exists and is iterable
                 if (Array.isArray(userData.babies)) {
-                    // Check if babyIndex is within the range of babies array
                     if (babyIndex >= 0 && babyIndex < userData.babies.length) {
-                        // Check if the baby at babyIndex has responses array
                         if (!userData.babies[babyIndex].responses) {
-                            userData.babies[babyIndex].responses = []; // Initialize responses array if not exist
+                            userData.babies[babyIndex].responses = []; 
                         }
 
                         // Push the new response into the responses array
@@ -418,7 +403,7 @@ const Recorder = () => {
 
                     />
                 }
-            /> : result != "" ? <><h1> {result}</h1>
+            /> : result != "" ? <><h1> {result} ({percentage * 10}%)</h1>
                 <Button onClick={saveResponse}>Save</Button></> : null}</>}
         </div >
 

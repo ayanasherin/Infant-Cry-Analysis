@@ -60,6 +60,7 @@ const UploadPage = () => {
             {user ?
                 <>
                     <TabX />
+                    <div style={{marginTop: "40px"}}></div>
 
                     <Modal
                         title="Select Baby"

@@ -23,8 +23,8 @@ const Registration = ({ onSuccess }) => {
     const [date, setDate] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const [afterDelivery, setAfterDelivery] = useState(false); // State for after delivery option
-    const [babyFieldsEnabled, setBabyFieldsEnabled] = useState(false); // State to enable/disable baby-related fields
+    const [afterDelivery, setAfterDelivery] = useState(false);
+    const [babyFieldsEnabled, setBabyFieldsEnabled] = useState(false);
     const [babyDate, setBabyDate] = useState('');
     const nav = useNavigate();
 
@@ -40,7 +40,6 @@ const Registration = ({ onSuccess }) => {
         values.babyDOB = babyDate;
         values.afterDelivery = afterDelivery;
 
-
         if (values.afterDelivery) {
             values.babies = [{
                 babyName: values.babyName,
@@ -52,11 +51,7 @@ const Registration = ({ onSuccess }) => {
             delete values.babyDOB;
         }
 
-
         delete values.DatePicker;
-
-
-        console.log(values);
 
         try {
             setLoading(true);
@@ -66,12 +61,9 @@ const Registration = ({ onSuccess }) => {
             const colRef = collection(db, "users");
             const newDocRef = doc(colRef, user.uid);
 
-
             if (user) {
-                console.log(values);
                 delete values.password;
                 await setDoc(newDocRef, values).then(() => {
-                    console.log("Success");
                     setLoading(false);
                     onSuccess();
                 }).catch((error) => {
@@ -90,50 +82,15 @@ const Registration = ({ onSuccess }) => {
     };
 
     const onChange = (date, dateString) => {
-        console.log(date, dateString);
         setDate(dateString);
-
-        function formatDate(inputDate) {
-            const date = new Date(inputDate);
-            const year = date.getFullYear();
-            const month = date.getMonth() + 1;
-            const day = date.getDate();
-
-            const formattedDate = `${year}-${month}-${day}`;
-            return formattedDate;
-        }
-
-        const inputDate = dateString;
-        const formattedDate = formatDate(inputDate);
-        setDate(formattedDate);
     };
 
     const onBabyDateChange = (date, dateString) => {
-        console.log(date, dateString);
         setBabyDate(dateString);
-
-        function formatDate(inputDate) {
-            const date = new Date(inputDate);
-            const year = date.getFullYear();
-            const month = date.getMonth() + 1;
-            const day = date.getDate();
-
-            const formattedDate = `${year}-${month}-${day}`;
-            return formattedDate;
-        }
-
-        const inputDate = dateString;
-        const formattedDate = formatDate(inputDate);
-        setBabyDate(formattedDate);
     };
 
-    // Function to toggle baby fields based on after delivery option
     const toggleBabyFields = (checked) => {
-        console.log(checked);
-
         setAfterDelivery(checked);
-
-
         setBabyFieldsEnabled(checked);
     };
 
@@ -157,6 +114,18 @@ const Registration = ({ onSuccess }) => {
                             required: true,
                             message: 'Please input your username!',
                         },
+                        {
+                            min: 3,
+                            message: 'Username must be at least 3 characters long!',
+                        },
+                        {
+                            max: 50,
+                            message: 'Username cannot be longer than 50 characters!',
+                        },
+                        {
+                            pattern: /^[a-zA-Z\s]+$/,
+                            message: 'Username must only contain letters and spaces!',
+                        },
                     ]}
                 >
                     <Input />
@@ -169,6 +138,10 @@ const Registration = ({ onSuccess }) => {
                         {
                             required: true,
                             message: 'Please input your email!',
+                        },
+                        {
+                            type: 'email',
+                            message: 'Please enter a valid email!',
                         },
                     ]}
                 >
@@ -219,7 +192,6 @@ const Registration = ({ onSuccess }) => {
                 <Form.Item
                     label="After Delivery"
                     name="afterDelivery"
-
                 >
                     <input type="checkbox" onChange={(e) => toggleBabyFields(e.target.checked)} />
                 </Form.Item>
@@ -246,7 +218,8 @@ const Registration = ({ onSuccess }) => {
                             label="Baby DOB"
                             name="babyDOB"
                         >
-                    <DatePicker disabledDate={(current) => current && current > moment().endOf('day')} onChange={onBabyDateChange} value={babyDate} />                        </Form.Item>
+                            <DatePicker disabledDate={(current) => current && current > moment().endOf('day')} onChange={onBabyDateChange} value={babyDate} />
+                        </Form.Item>
                     </>
                 )}
 
